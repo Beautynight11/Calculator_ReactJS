@@ -3,16 +3,19 @@ import React from 'react';
 import './FunctionalButton.sass'
 
 const FunctionalButton = ({ value, actionButton }) => {
-  let colorButton = value === 'C' ? 'orange' : 'white';
+  const className = value === '0' ? 'functionalButton functionalButton--zero' : 'functionalButton';
+  const colorButton =
+    value === 'C' ? '#7799f1' : '#575656' &&
+    value === '=' ? '#ff6565' : '#575656'
 
   return (
       <div
-          className='functionalButton'
-          style={{backgroundColor: `${colorButton}`}}
+          className={className}
+          style={{ background:`${colorButton}` }}
           onClick={() => actionButton(value)}
       >
         <div className='functionalButton__button'>
-          { value }
+          {value}
         </div>
       </div>
   );
