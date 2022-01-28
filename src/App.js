@@ -149,7 +149,6 @@ const App = () => {
   const FunBtn = ({ value }) => (
     <FunctionalButton value={value} actionButton={actionButton} />
   );
-  console.log(number, secondNumber)
 
   return (
     <div className="App">
