@@ -14,7 +14,15 @@ const App = () => {
   const [result, setResult] = useState('');
 
   const actionButton = useCallback((value) => {
-    if (number && secondNumber && value !== '+/-' && value !== '.') {
+    if (number &&
+      secondNumber &&
+      value !== '+/-' &&
+      value !== '.' &&
+      (value === '+' ||
+      value === '-' ||
+      value === '*' ||
+      value === '/')
+    ) {
       if (OPERATORS.includes(operator)) {
           setSecondNumber(
             // eslint-disable-next-line no-eval
@@ -41,14 +49,10 @@ const App = () => {
         setResult('');
         if (number.length <= 16) {
           if ((!number.includes('.') || value !== '.')) {
-            setNumber(number);
+            setNumber(number + value);
           }
-          setNumber(number + value);
         } else {
           setNumber(number)
-        }
-        if (value === '.' && number.includes('.')) {
-          setNumber(number);
         }
         break;
       case ('C'):
@@ -145,6 +149,7 @@ const App = () => {
   const FunBtn = ({ value }) => (
     <FunctionalButton value={value} actionButton={actionButton} />
   );
+  console.log(number, secondNumber)
 
   return (
     <div className="App">
